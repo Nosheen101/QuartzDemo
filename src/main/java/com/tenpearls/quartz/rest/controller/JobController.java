@@ -28,6 +28,7 @@ public class JobController {
 
            // scheduler.scheduleJob(jobADetails(),jobATrigger());  this is cron example
             scheduler.scheduleJob(jobADetails(),jobASimpleTrigger());
+            //scheduler.shutdown(true);
         } catch (SchedulerException e) {
             e.printStackTrace();
         }
@@ -58,7 +59,7 @@ public class JobController {
                 .withSchedule(simpleSchedule().
                         withRepeatCount(SimpleTrigger.REPEAT_INDEFINITELY).
                         withIntervalInSeconds(10).
-                        withMisfireHandlingInstructionNextWithRemainingCount() )//or other
+                        withMisfireHandlingInstructionIgnoreMisfires() )//or other
                 .build();
     }
 
